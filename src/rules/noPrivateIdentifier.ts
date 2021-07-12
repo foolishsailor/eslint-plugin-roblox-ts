@@ -1,4 +1,4 @@
-import ts, { isPrivateIdentifier } from "typescript";
+import ts, { isPrivateIdentifier, PrivateIdentifier } from "typescript";
 import { getParserServices, makeRule } from "../util/rules";
 
 export const noPrivateIdentifierName = "no-private-identifier";
@@ -12,6 +12,7 @@ export const noPrivateIdentifier = makeRule<[], "privateIdentifierViolation">({
 			recommended: "error",
 			requiresTypeChecking: false,
 		},
+		fixable: "code",
 		messages: {
 			privateIdentifierViolation: "Private identifiers are not supported!",
 		},
@@ -24,9 +25,15 @@ export const noPrivateIdentifier = makeRule<[], "privateIdentifierViolation">({
 			ClassProperty(node) {
 				const tsNode = service.esTreeNodeToTSNodeMap.get(node.key);
 				if (isPrivateIdentifier(tsNode)) {
+					const PrivateIdentifierTsNode = tsNode as PrivateIdentifier;
 					context.report({
 						node: node,
 						messageId: "privateIdentifierViolation",
+						fix: fixer =>
+							fixer.replaceText(
+								node.key,
+								`private ${PrivateIdentifierTsNode.escapedText.toString().substring(1)}`,
+							),
 					});
 				}
 			},
