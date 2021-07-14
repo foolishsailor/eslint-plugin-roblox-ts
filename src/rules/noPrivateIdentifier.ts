@@ -1,4 +1,4 @@
-import ts, { isPrivateIdentifier, PrivateIdentifier } from "typescript";
+import ts from "typescript";
 import { getParserServices, makeRule } from "../util/rules";
 
 export const noPrivateIdentifierName = "no-private-identifier";
@@ -23,17 +23,13 @@ export const noPrivateIdentifier = makeRule<[], "privateIdentifierViolation">({
 		const service = getParserServices(context);
 		return {
 			ClassProperty(node) {
-				const tsNode = service.esTreeNodeToTSNodeMap.get(node.key);
-				if (isPrivateIdentifier(tsNode)) {
-					const PrivateIdentifierTsNode = tsNode as PrivateIdentifier;
+				const tsNode = service.esTreeNodeToTSNodeMap.get(node.key) as ts.Node;
+				if (ts.isPrivateIdentifier(tsNode)) {
 					context.report({
 						node: node,
 						messageId: "privateIdentifierViolation",
 						fix: fixer =>
-							fixer.replaceText(
-								node.key,
-								`private ${PrivateIdentifierTsNode.escapedText.toString().substring(1)}`,
-							),
+							fixer.replaceText(node.key, `private ${tsNode.escapedText.toString().substring(1)}`),
 					});
 				}
 			},
