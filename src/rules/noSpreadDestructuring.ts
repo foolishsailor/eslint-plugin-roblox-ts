@@ -1,5 +1,4 @@
-import ts, { ElementFlags, isPrivateIdentifier, isRestTypeNode } from "typescript";
-import { getParserServices, makeRule } from "../util/rules";
+import { makeRule } from "../util/rules";
 
 export const noSpreadDestructuringName = "no-spread-destructuring";
 export const noSpreadDestructuring = makeRule<[], "spreadDestructuringViolation">({
