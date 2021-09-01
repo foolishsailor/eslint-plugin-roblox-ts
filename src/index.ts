@@ -52,7 +52,8 @@ export = makePlugin({
 		recommended: {
 			rules: {
 				...robloxTSSettings({
-					"no-any": "error",
+					"no-any": "off",
+
 					"no-delete": "error",
 					"no-enum-merging": "error",
 					"no-for-in": "error",
