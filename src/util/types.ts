@@ -33,8 +33,8 @@ function isDefinitelyTypeInner(type: ts.Type, callback: (type: ts.Type) => boole
 	}
 }
 
-export function isDefinitelyType(type: ts.Type, cb: (type: ts.Type) => boolean) {
-	return isDefinitelyTypeInner(type.getConstraint() ?? type, cb);
+export function isDefinitelyType(type: ts.Type, callback: (type: ts.Type) => boolean) {
+	return isDefinitelyTypeInner(type.getConstraint() ?? type, callback);
 }
 
 function isPossiblyTypeInner(type: ts.Type, callback: (type: ts.Type) => boolean): boolean {
@@ -59,8 +59,8 @@ function isPossiblyTypeInner(type: ts.Type, callback: (type: ts.Type) => boolean
 	}
 }
 
-export function isPossiblyType(type: ts.Type, cb: (type: ts.Type) => boolean) {
-	return isPossiblyTypeInner(type.getConstraint() ?? type, cb);
+export function isPossiblyType(type: ts.Type, callback: (type: ts.Type) => boolean) {
+	return isPossiblyTypeInner(type.getConstraint() ?? type, callback);
 }
 
 export function isDefinedType(type: ts.Type) {
