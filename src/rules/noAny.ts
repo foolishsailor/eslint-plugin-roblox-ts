@@ -11,7 +11,6 @@ export const noAny = makeRule<[], "anyViolation">({
 		type: "problem",
 		docs: {
 			description: "Bans prototype from being used",
-			category: "Possible Errors",
 			recommended: "error",
 			requiresTypeChecking: true,
 		},
@@ -22,7 +21,11 @@ export const noAny = makeRule<[], "anyViolation">({
 	},
 	defaultOptions: [],
 	create(context) {
-		function validateNotAnyType(checker: ts.TypeChecker, esNode: TSESTree.Expression, tsNode: ts.Expression) {
+		function validateNotAnyType(
+			checker: ts.TypeChecker,
+			esNode: TSESTree.PrivateIdentifier | TSESTree.Expression,
+			tsNode: ts.Expression,
+		) {
 			if (ts.isSpreadElement(tsNode)) {
 				tsNode = skipDownwards(tsNode.expression);
 			}

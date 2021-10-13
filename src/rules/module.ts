@@ -7,7 +7,6 @@ export const module = makeRule<[], "moduleViolation">({
 		type: "problem",
 		docs: {
 			description: "Enforces file is a module",
-			category: "Possible Errors",
 			recommended: "error",
 			requiresTypeChecking: false,
 		},

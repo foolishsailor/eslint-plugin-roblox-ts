@@ -7,7 +7,6 @@ export const noEnumMerging = makeRule<[], "enumMergingViolation">({
 		type: "problem",
 		docs: {
 			description: "Bans enum declaration merging",
-			category: "Possible Errors",
 			recommended: "error",
 			requiresTypeChecking: false,
 		},
@@ -24,7 +23,7 @@ export const noEnumMerging = makeRule<[], "enumMergingViolation">({
 			TSEnumDeclaration(node) {
 				const tsNode = service.esTreeNodeToTSNodeMap.get(node);
 				const symbol = checker.getSymbolAtLocation(tsNode.name);
-				if (symbol && symbol.declarations.length > 1) {
+				if (symbol && symbol.declarations && symbol.declarations.length > 1) {
 					context.report({
 						node: node.id,
 						messageId: "enumMergingViolation",

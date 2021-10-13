@@ -8,7 +8,6 @@ export const noPrivateIdentifier = makeRule<[], "privateIdentifierViolation">({
 		type: "problem",
 		docs: {
 			description: "Bans private identifiers from being used",
-			category: "Possible Errors",
 			recommended: "error",
 			requiresTypeChecking: false,
 		},
@@ -22,8 +21,8 @@ export const noPrivateIdentifier = makeRule<[], "privateIdentifierViolation">({
 	create(context) {
 		const service = getParserServices(context);
 		return {
-			ClassProperty(node) {
-				const tsNode = service.esTreeNodeToTSNodeMap.get(node.key) as ts.Node;
+			PropertyDefinition(node) {
+				const tsNode = service.esTreeNodeToTSNodeMap.get(node.key);
 				if (ts.isPrivateIdentifier(tsNode)) {
 					context.report({
 						node: node,

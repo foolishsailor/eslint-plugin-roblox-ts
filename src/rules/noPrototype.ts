@@ -8,7 +8,6 @@ export const noPrototype = makeRule<[], "prototypeViolation">({
 		type: "problem",
 		docs: {
 			description: "Bans prototype from being used",
-			category: "Possible Errors",
 			recommended: "error",
 			requiresTypeChecking: false,
 		},

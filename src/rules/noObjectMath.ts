@@ -18,7 +18,6 @@ export const noObjectMath = makeRule<[], ViolationType>({
 		type: "problem",
 		docs: {
 			description: "Bans math operators from being used on data types",
-			category: "Possible Errors",
 			recommended: "error",
 			requiresTypeChecking: true,
 		},

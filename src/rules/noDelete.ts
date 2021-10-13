@@ -7,7 +7,6 @@ export const noDelete = makeRule<[], "deleteViolation">({
 		type: "problem",
 		docs: {
 			description: "Disallows the delete operator",
-			category: "Possible Errors",
 			recommended: "error",
 			requiresTypeChecking: false,
 		},

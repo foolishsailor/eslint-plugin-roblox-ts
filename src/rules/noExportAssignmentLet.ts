@@ -11,7 +11,6 @@ export const noExportAssignmentLet = makeRule<[], "noExportAssignmentLetViolatio
 		type: "problem",
 		docs: {
 			description: "Bans using `export =` on a let variable",
-			category: "Possible Errors",
 			recommended: "error",
 			requiresTypeChecking: false,
 		},

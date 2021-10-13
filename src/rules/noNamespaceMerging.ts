@@ -12,7 +12,7 @@ function isDeclarationOfNamespace(declaration: ts.Declaration) {
 
 function hasMultipleInstantiations(symbol: ts.Symbol): boolean {
 	let amtValueDeclarations = 0;
-	for (const declaration of symbol.declarations) {
+	for (const declaration of symbol.declarations ?? []) {
 		if (isDeclarationOfNamespace(declaration)) {
 			amtValueDeclarations++;
 			if (amtValueDeclarations > 1) {
@@ -30,7 +30,6 @@ export const noNamespaceMerging = makeRule<[], "namespaceMergingViolation">({
 		type: "problem",
 		docs: {
 			description: "Bans namespace declaration merging",
-			category: "Possible Errors",
 			recommended: "error",
 			requiresTypeChecking: false,
 		},

@@ -7,7 +7,6 @@ export const noValueTypeOf = makeRule<[], "typeofValueViolation">({
 		type: "problem",
 		docs: {
 			description: "Disallows the typeof operator for values",
-			category: "Possible Errors",
 			recommended: "error",
 			requiresTypeChecking: false,
 		},

@@ -8,7 +8,6 @@ export const misleadingLuatupleChecks = makeRule<[], "bannedLuaTupleCheck">({
 		type: "problem",
 		docs: {
 			description: "Bans LuaTuples boolean expressions",
-			category: "Possible Errors",
 			recommended: "error",
 			requiresTypeChecking: true,
 		},
