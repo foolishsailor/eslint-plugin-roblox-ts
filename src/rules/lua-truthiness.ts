@@ -45,10 +45,7 @@ export const luaTruthiness = makeRule<[], "falsyStringNumberCheck">({
 				context.report({
 					node,
 					messageId: "falsyStringNumberCheck",
-					fix:
-						isAssignableToUndefined && !isAssignableToBoolean
-							? fix => fix.insertTextAfter(node, " !== undefined")
-							: undefined,
+					fix: undefined,
 				});
 			}
 		}
