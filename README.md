@@ -59,6 +59,7 @@ Make a file named `.eslintrc` and place this in the contents.
         "prettier"
     ],
     "extends": [
+        "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "prettier/@typescript-eslint",
         "plugin:prettier/recommended",
