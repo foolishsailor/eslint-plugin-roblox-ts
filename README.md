@@ -1,4 +1,4 @@
-# lint-rules
+# eslint-plugin-roblox-ts
 
 ![lint rules demo](https://user-images.githubusercontent.com/15217173/64753460-ed490e80-d4e8-11e9-9af9-06fb1a0aceae.gif)
 
