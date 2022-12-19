@@ -1,14 +1,6 @@
 import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/experimental-utils";
 import { ExpressionWithTest, getParserServices, makeRule } from "../util/rules";
-import {
-	getType,
-	isBooleanType,
-	isEmptyStringType,
-	isNaNType,
-	isNumberLiteralType,
-	isPossiblyType,
-	isUndefinedType,
-} from "../util/types";
+import { getType, isEmptyStringType, isNaNType, isNumberLiteralType, isPossiblyType } from "../util/types";
 
 export const luaTruthinessName = "lua-truthiness";
 export const luaTruthiness = makeRule<[], "falsyStringNumberCheck">({
@@ -35,8 +27,6 @@ export const luaTruthiness = makeRule<[], "falsyStringNumberCheck">({
 		function checkTruthy(node: TSESTree.Node) {
 			const type = getType(checker, service.esTreeNodeToTSNodeMap.get(node));
 
-			const isAssignableToUndefined = isPossiblyType(type, t => isUndefinedType(t));
-			const isAssignableToBoolean = isPossiblyType(type, t => isBooleanType(t));
 			const isAssignableToZero = isPossiblyType(type, t => isNumberLiteralType(t, 0));
 			const isAssignableToNaN = isPossiblyType(type, t => isNaNType(t));
 			const isAssignableToEmptyString = isPossiblyType(type, t => isEmptyStringType(t));
