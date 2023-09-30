@@ -1,6 +1,6 @@
 {
 	"name": "eslint-plugin-roblox-ts",
-	"version": "0.0.35",
+	"version": "0.0.36",
 	"main": "out/index.js",
 	"engines": {
 		"node": ">=0.10.0"
