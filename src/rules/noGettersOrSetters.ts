@@ -1,4 +1,4 @@
-import { TSESTree } from "@typescript-eslint/typescript-estree";
+import { TSESTree } from "@typescript-eslint/experimental-utils";
 import { makeRule } from "../util/rules";
 
 export const noGettersOrSettersName = "no-getters-or-setters";

@@ -1,5 +1,4 @@
 import { AST_NODE_TYPES } from "@typescript-eslint/experimental-utils";
-import { Variable } from "@typescript-eslint/scope-manager/dist/variable/Variable";
 import ts from "typescript";
 import { getParserServices, makeRule } from "../util/rules";
 
@@ -28,7 +27,7 @@ export const noExportAssignmentLet = makeRule<[], "noExportAssignmentLetViolatio
 
 				const expression = tsNode.expression;
 				if (ts.isIdentifier(expression)) {
-					const variable: Variable | undefined = context.getScope().variables.find(variable => {
+					const variable = context.getScope().variables.find(variable => {
 						return variable.identifiers[0].name === expression.escapedText;
 					});
 					// Not sure why this works?
