@@ -53,7 +53,7 @@ export = makePlugin({
 			rules: {
 				...robloxTSSettings({
 					"no-any": "off",
-
+					"no-array-length": "error",
 					"no-enum-merging": "error",
 					"no-for-in": "error",
 					"no-function-expression-id": "error",
